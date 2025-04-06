@@ -1,10 +1,11 @@
-const { app, BrowserWindow, screen } = require('electron');
+import { app, BrowserWindow, screen } from 'electron';
+
 
 app.commandLine.appendSwitch('ozone-platform-hint', 'auto');
 app.commandLine.appendSwitch('enable-features', 'WaylandWindowDecorations');
 
 // Declare mainWindow in a broader scope
-let mainWindow;
+let mainWindow: BrowserWindow;
 
 app.on('ready', () => {
   // Get the primary display's work area size
