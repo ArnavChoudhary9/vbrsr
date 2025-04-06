@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Browser</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      /* Full viewport height */
+    }
+
+    #controls {
+      height: 50px;
+      /* Fixed height for navigation controls */
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      background-color: #f0f0f0;
+    }
+
+    #webview-container {
+      flex-grow: 1;
+      /* Fill remaining space */
+    }
+
+    webview {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="controls">
+    <input id="url" type="text" placeholder="Enter URL" style="flex-grow: 1;">
+    <button onclick="navigate()">Go</button>
+  </div>
+  <div id="webview-container">
+    <webview id="webview" src="https://www.google.com"></webview>
+  </div>
+
+  <script>
+    function navigate() {
+      const url = document.getElementById('url').value;
+      document.getElementById('webview').src = url.startsWith('http') ? url : `https://${url}`;
+    }
+  </script>
+</body>
+
+</html>
