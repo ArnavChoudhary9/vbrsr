@@ -7,8 +7,14 @@ function App(): JSX.Element {
   const [inputUrl, setInputUrl] = useState('');
 
   const handleLoadUrl = () => {
-    if (inputUrl.trim()) {
-      setUrl(inputUrl.trim());
+    let formatedUrl = inputUrl.trim();
+
+    if (formatedUrl) {
+      if (!formatedUrl.startsWith('http')) {
+        formatedUrl = `https://${formatedUrl}`;
+      }
+
+      setUrl(formatedUrl);
     }
   };
 
